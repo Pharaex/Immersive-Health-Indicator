@@ -1,0 +1,14 @@
+scn SimpleImmersiveHealthKey
+
+ Begin GameMode
+
+  if GetGameRestarted 
+    if ((GetINIFloat "Indicator:Text" "SIHI\SIHIConfig.ini") == 1) && ((GetINIFloat "Indicator:Sound" "SIHI\SIHIConfig.ini") == 0)
+	    SetOnKeyDownEventHandler ImmersiveHealthIndicatorTextOnly 1 (GetINIFloat "HotKey:Key" "SIHI\SIHIConfig.ini")
+    elseif ((GetINIFloat "Indicator:Text" "SIHI\SIHIConfig.ini") == 0) && ((GetINIFloat "Indicator:Sound" "SIHI\SIHIConfig.ini") == 1)
+      SetOnKeyDownEventHandler ImmersiveHealthIndicatorSoundOnly 1 (GetINIFloat "HotKey:Key" "SIHI\SIHIConfig.ini")
+    else
+      SetOnKeyDownEventHandler ImmersiveHealthIndicator 1 (GetINIFloat "HotKey:Key" "SIHI\SIHIConfig.ini")
+    endif
+  endif
+End

@@ -1,0 +1,36 @@
+scn ImmersiveHealthIndicatorSoundOnly
+
+float fHealthPerc
+float fLowerBound1
+float fLowerBound2
+float fUpperBound2
+float fUpperBound3
+
+Begin Function {int iKeyCode}
+    fHealthPerc = Player.GetHealthPercentage
+    fLowerBound1 = 0.7
+    fLowerBound2 = 0.30
+    fUpperBound2 = 0.69
+    fUpperBound3 = 0.29
+
+If fHealthPerc >= fLowerBound1 
+    if GetPCIsSex Male == 1
+        PlaySound SihiMlFine
+    else
+        PlaySound SihiFlFine
+    endif
+elseif fHealthPerc >= fLowerBound2 && fHealthPerc <= fUpperBound2
+    if GetPCIsSex Male == 1
+        PlaySound SihiMlCaution
+    else
+        PlaySound SihiFlCaution
+    endif
+elseif fHealthPerc <= fUpperBound3
+    if GetPCIsSex Male == 1
+        PlaySound SihiMlDanger
+    else
+        PlaySound SihiFlDanger
+    endif
+endif
+
+end

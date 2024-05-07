@@ -1,0 +1,24 @@
+scn ImmersiveHealthIndicatorTextOnly
+
+float fHealthPerc
+float fLowerBound1
+float fLowerBound2
+float fUpperBound2
+float fUpperBound3
+
+Begin Function {int iKeyCode}
+    fHealthPerc = Player.GetHealthPercentage
+    fLowerBound1 = 0.7
+    fLowerBound2 = 0.30
+    fUpperBound2 = 0.69
+    fUpperBound3 = 0.29
+
+If fHealthPerc >= fLowerBound1 
+            MessageEx "Healthy"
+elseif fHealthPerc >= fLowerBound2 && fHealthPerc <= fUpperBound2
+            MessageExAlt 4 "#0|Wounded"
+elseif fHealthPerc <= fUpperBound3
+            MessageExAlt 4 "#6|Critically Wounded" 
+endif
+
+end
